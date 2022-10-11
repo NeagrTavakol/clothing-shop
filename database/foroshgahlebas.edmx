@@ -1,0 +1,722 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="foroshgahlebasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="address">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="city" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="street" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="postalcode" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fullname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="phonenumber" Type="bigint" Nullable="false" />
+          <Property Name="addressid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dress">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="size" Type="float" Nullable="false" />
+          <Property Name="color" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="producerid" Type="int" Nullable="false" />
+          <Property Name="number" Type="int" Nullable="false" />
+          <Property Name="payment" Type="bigint" Nullable="false" />
+          <Property Name="typeid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dress-factor">
+          <Key>
+            <PropertyRef Name="factorid" />
+            <PropertyRef Name="dressid" />
+          </Key>
+          <Property Name="factorid" Type="int" Nullable="false" />
+          <Property Name="dressid" Type="int" Nullable="false" />
+          <Property Name="number" Type="int" Nullable="false" />
+          <Property Name="payment" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="factor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customerid" Type="int" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="payment" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="producer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="producername" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="addressid" Type="int" Nullable="false" />
+          <Property Name="telephone" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="typename" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fullname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="codemeli" Type="bigint" Nullable="false" />
+          <Property Name="addresid" Type="int" Nullable="false" />
+          <Property Name="phonenumber" Type="bigint" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user-role">
+          <Key>
+            <PropertyRef Name="userid" />
+            <PropertyRef Name="roleid" />
+          </Key>
+          <Property Name="userid" Type="int" Nullable="false" />
+          <Property Name="roleid" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_cutomer_address">
+          <End Role="address" Type="Self.address" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="customer" Type="Self.customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="address">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="addressid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dress_producer">
+          <End Role="producer" Type="Self.producer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="dress" Type="Self.dress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="producer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dress">
+              <PropertyRef Name="producerid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dress_type">
+          <End Role="type" Type="Self.type" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="dress" Type="Self.dress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dress">
+              <PropertyRef Name="typeid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dress-factor_dress">
+          <End Role="dress" Type="Self.dress" Multiplicity="1" />
+          <End Role="dress-factor" Type="Self.dress-factor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dress">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dress-factor">
+              <PropertyRef Name="dressid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dress-factor_factor">
+          <End Role="factor" Type="Self.factor" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="dress-factor" Type="Self.dress-factor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="factor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dress-factor">
+              <PropertyRef Name="factorid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_factor_cutomer">
+          <End Role="customer" Type="Self.customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="factor" Type="Self.factor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="factor">
+              <PropertyRef Name="customerid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_producer_address1">
+          <End Role="address" Type="Self.address" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="producer" Type="Self.producer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="address">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="producer">
+              <PropertyRef Name="addressid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_address">
+          <End Role="address" Type="Self.address" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="address">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="addresid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user-role_role">
+          <End Role="role" Type="Self.role" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="user-role" Type="Self.user-role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user-role">
+              <PropertyRef Name="roleid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user-role_user">
+          <End Role="user" Type="Self.user" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="user-role" Type="Self.user-role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user-role">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="foroshgahlebasModelStoreContainer">
+          <EntitySet Name="address" EntityType="Self.address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dress" EntityType="Self.dress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dress-factor" EntityType="Self.dress-factor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="factor" EntityType="Self.factor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="producer" EntityType="Self.producer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="role" EntityType="Self.role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type" EntityType="Self.type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user-role" EntityType="Self.user-role" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_cutomer_address" Association="Self.FK_cutomer_address">
+            <End Role="address" EntitySet="address" />
+            <End Role="customer" EntitySet="customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dress_producer" Association="Self.FK_dress_producer">
+            <End Role="producer" EntitySet="producer" />
+            <End Role="dress" EntitySet="dress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dress_type" Association="Self.FK_dress_type">
+            <End Role="type" EntitySet="type" />
+            <End Role="dress" EntitySet="dress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dress-factor_dress" Association="Self.FK_dress-factor_dress">
+            <End Role="dress" EntitySet="dress" />
+            <End Role="dress-factor" EntitySet="dress-factor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dress-factor_factor" Association="Self.FK_dress-factor_factor">
+            <End Role="factor" EntitySet="factor" />
+            <End Role="dress-factor" EntitySet="dress-factor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_factor_cutomer" Association="Self.FK_factor_cutomer">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="factor" EntitySet="factor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_producer_address1" Association="Self.FK_producer_address1">
+            <End Role="address" EntitySet="address" />
+            <End Role="producer" EntitySet="producer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_address" Association="Self.FK_user_address">
+            <End Role="address" EntitySet="address" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user-role_role" Association="Self.FK_user-role_role">
+            <End Role="role" EntitySet="role" />
+            <End Role="user-role" EntitySet="user-role" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user-role_user" Association="Self.FK_user-role_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="user-role" EntitySet="user-role" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="foroshgahlebasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="foroshgahlebasEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="addresses" EntityType="foroshgahlebasModel.address" />
+          <EntitySet Name="customers" EntityType="foroshgahlebasModel.customer" />
+          <EntitySet Name="dresses" EntityType="foroshgahlebasModel.dress" />
+          <EntitySet Name="dress_factor" EntityType="foroshgahlebasModel.dress_factor" />
+          <EntitySet Name="producers" EntityType="foroshgahlebasModel.producer" />
+          <EntitySet Name="sysdiagrams" EntityType="foroshgahlebasModel.sysdiagram" />
+          <EntitySet Name="types" EntityType="foroshgahlebasModel.type" />
+          <AssociationSet Name="FK_cutomer_address" Association="foroshgahlebasModel.FK_cutomer_address">
+            <End Role="address" EntitySet="addresses" />
+            <End Role="customer" EntitySet="customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_producer_address1" Association="foroshgahlebasModel.FK_producer_address1">
+            <End Role="address" EntitySet="addresses" />
+            <End Role="producer" EntitySet="producers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dress_producer" Association="foroshgahlebasModel.FK_dress_producer">
+            <End Role="producer" EntitySet="producers" />
+            <End Role="dress" EntitySet="dresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dress_type" Association="foroshgahlebasModel.FK_dress_type">
+            <End Role="type" EntitySet="types" />
+            <End Role="dress" EntitySet="dresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dress_factor_dress" Association="foroshgahlebasModel.FK_dress_factor_dress">
+            <End Role="dress" EntitySet="dresses" />
+            <End Role="dress_factor" EntitySet="dress_factor" />
+          </AssociationSet>
+          <EntitySet Name="factors" EntityType="foroshgahlebasModel.factor" />
+          <AssociationSet Name="FK_factor_cutomer" Association="foroshgahlebasModel.FK_factor_cutomer">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="factor" EntitySet="factors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dress_factor_factor" Association="foroshgahlebasModel.FK_dress_factor_factor">
+            <End Role="factor" EntitySet="factors" />
+            <End Role="dress_factor" EntitySet="dress_factor" />
+          </AssociationSet>
+          <EntitySet Name="roles" EntityType="foroshgahlebasModel.role" />
+          <EntitySet Name="users" EntityType="foroshgahlebasModel.user" />
+          <AssociationSet Name="FK_user_address" Association="foroshgahlebasModel.FK_user_address">
+            <End Role="address" EntitySet="addresses" />
+            <End Role="user" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="user_role" Association="foroshgahlebasModel.user_role">
+            <End Role="role" EntitySet="roles" />
+            <End Role="user" EntitySet="users" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="address">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="city" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="street" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="postalcode" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="customers" Relationship="foroshgahlebasModel.FK_cutomer_address" FromRole="address" ToRole="customer" />
+          <NavigationProperty Name="producers" Relationship="foroshgahlebasModel.FK_producer_address1" FromRole="address" ToRole="producer" />
+          <NavigationProperty Name="users" Relationship="foroshgahlebasModel.FK_user_address" FromRole="address" ToRole="user" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fullname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="phonenumber" Type="Int64" Nullable="false" />
+          <Property Name="addressid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="address" Relationship="foroshgahlebasModel.FK_cutomer_address" FromRole="customer" ToRole="address" />
+          <NavigationProperty Name="factors" Relationship="foroshgahlebasModel.FK_factor_cutomer" FromRole="customer" ToRole="factor" />
+        </EntityType>
+        <EntityType Name="dress">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="size" Type="Double" Nullable="false" />
+          <Property Name="color" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="producerid" Type="Int32" Nullable="false" />
+          <Property Name="number" Type="Int32" Nullable="false" />
+          <Property Name="payment" Type="Int64" Nullable="false" />
+          <Property Name="typeid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="producer" Relationship="foroshgahlebasModel.FK_dress_producer" FromRole="dress" ToRole="producer" />
+          <NavigationProperty Name="type" Relationship="foroshgahlebasModel.FK_dress_type" FromRole="dress" ToRole="type" />
+          <NavigationProperty Name="dress_factor" Relationship="foroshgahlebasModel.FK_dress_factor_dress" FromRole="dress" ToRole="dress_factor" />
+        </EntityType>
+        <EntityType Name="dress_factor">
+          <Key>
+            <PropertyRef Name="factorid" />
+            <PropertyRef Name="dressid" />
+          </Key>
+          <Property Name="factorid" Type="Int32" Nullable="false" />
+          <Property Name="dressid" Type="Int32" Nullable="false" />
+          <Property Name="number" Type="Int32" Nullable="false" />
+          <Property Name="payment" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="dress" Relationship="foroshgahlebasModel.FK_dress_factor_dress" FromRole="dress_factor" ToRole="dress" />
+          <NavigationProperty Name="factor" Relationship="foroshgahlebasModel.FK_dress_factor_factor" FromRole="dress_factor" ToRole="factor" />
+        </EntityType>
+        <EntityType Name="producer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="producername" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="addressid" Type="Int32" Nullable="false" />
+          <Property Name="telephone" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="address" Relationship="foroshgahlebasModel.FK_producer_address1" FromRole="producer" ToRole="address" />
+          <NavigationProperty Name="dresses" Relationship="foroshgahlebasModel.FK_dress_producer" FromRole="producer" ToRole="dress" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="typename" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="dresses" Relationship="foroshgahlebasModel.FK_dress_type" FromRole="type" ToRole="dress" />
+        </EntityType>
+        <Association Name="FK_cutomer_address">
+          <End Type="foroshgahlebasModel.address" Role="address" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="foroshgahlebasModel.customer" Role="customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="address">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="addressid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_producer_address1">
+          <End Type="foroshgahlebasModel.address" Role="address" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="foroshgahlebasModel.producer" Role="producer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="address">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="producer">
+              <PropertyRef Name="addressid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dress_producer">
+          <End Type="foroshgahlebasModel.producer" Role="producer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="foroshgahlebasModel.dress" Role="dress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="producer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dress">
+              <PropertyRef Name="producerid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dress_type">
+          <End Type="foroshgahlebasModel.type" Role="type" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="foroshgahlebasModel.dress" Role="dress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dress">
+              <PropertyRef Name="typeid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dress_factor_dress">
+          <End Type="foroshgahlebasModel.dress" Role="dress" Multiplicity="1" />
+          <End Type="foroshgahlebasModel.dress_factor" Role="dress_factor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dress">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dress_factor">
+              <PropertyRef Name="dressid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="factor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customerid" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="payment" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="customer" Relationship="foroshgahlebasModel.FK_factor_cutomer" FromRole="factor" ToRole="customer" />
+          <NavigationProperty Name="dress_factor" Relationship="foroshgahlebasModel.FK_dress_factor_factor" FromRole="factor" ToRole="dress_factor" />
+        </EntityType>
+        <Association Name="FK_factor_cutomer">
+          <End Type="foroshgahlebasModel.customer" Role="customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="foroshgahlebasModel.factor" Role="factor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="factor">
+              <PropertyRef Name="customerid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dress_factor_factor">
+          <End Type="foroshgahlebasModel.factor" Role="factor" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="foroshgahlebasModel.dress_factor" Role="dress_factor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="factor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dress_factor">
+              <PropertyRef Name="factorid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="users" Relationship="foroshgahlebasModel.user_role" FromRole="role" ToRole="user" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fullname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="codemeli" Type="Int64" Nullable="false" />
+          <Property Name="addresid" Type="Int32" Nullable="false" />
+          <Property Name="phonenumber" Type="Int64" Nullable="false" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="address" Relationship="foroshgahlebasModel.FK_user_address" FromRole="user" ToRole="address" />
+          <NavigationProperty Name="roles" Relationship="foroshgahlebasModel.user_role" FromRole="user" ToRole="role" />
+        </EntityType>
+        <Association Name="FK_user_address">
+          <End Type="foroshgahlebasModel.address" Role="address" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="foroshgahlebasModel.user" Role="user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="address">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="addresid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_role">
+          <End Type="foroshgahlebasModel.role" Role="role" Multiplicity="*" />
+          <End Type="foroshgahlebasModel.user" Role="user" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="foroshgahlebasModelStoreContainer" CdmEntityContainer="foroshgahlebasEntities">
+          <EntitySetMapping Name="addresses">
+            <EntityTypeMapping TypeName="foroshgahlebasModel.address">
+              <MappingFragment StoreEntitySet="address">
+                <ScalarProperty Name="postalcode" ColumnName="postalcode" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="foroshgahlebasModel.customer">
+              <MappingFragment StoreEntitySet="customer">
+                <ScalarProperty Name="addressid" ColumnName="addressid" />
+                <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+                <ScalarProperty Name="fullname" ColumnName="fullname" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dresses">
+            <EntityTypeMapping TypeName="foroshgahlebasModel.dress">
+              <MappingFragment StoreEntitySet="dress">
+                <ScalarProperty Name="typeid" ColumnName="typeid" />
+                <ScalarProperty Name="payment" ColumnName="payment" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="producerid" ColumnName="producerid" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="size" ColumnName="size" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dress_factor">
+            <EntityTypeMapping TypeName="foroshgahlebasModel.dress_factor">
+              <MappingFragment StoreEntitySet="dress-factor">
+                <ScalarProperty Name="payment" ColumnName="payment" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="dressid" ColumnName="dressid" />
+                <ScalarProperty Name="factorid" ColumnName="factorid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="producers">
+            <EntityTypeMapping TypeName="foroshgahlebasModel.producer">
+              <MappingFragment StoreEntitySet="producer">
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="addressid" ColumnName="addressid" />
+                <ScalarProperty Name="producername" ColumnName="producername" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="foroshgahlebasModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="types">
+            <EntityTypeMapping TypeName="foroshgahlebasModel.type">
+              <MappingFragment StoreEntitySet="type">
+                <ScalarProperty Name="typename" ColumnName="typename" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="factors">
+            <EntityTypeMapping TypeName="foroshgahlebasModel.factor">
+              <MappingFragment StoreEntitySet="factor">
+                <ScalarProperty Name="payment" ColumnName="payment" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="customerid" ColumnName="customerid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="roles">
+            <EntityTypeMapping TypeName="foroshgahlebasModel.role">
+              <MappingFragment StoreEntitySet="role">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="foroshgahlebasModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+                <ScalarProperty Name="addresid" ColumnName="addresid" />
+                <ScalarProperty Name="codemeli" ColumnName="codemeli" />
+                <ScalarProperty Name="fullname" ColumnName="fullname" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="user_role" TypeName="foroshgahlebasModel.user_role" StoreEntitySet="user-role">
+            <EndProperty Name="user">
+              <ScalarProperty Name="id" ColumnName="userid" />
+            </EndProperty>
+            <EndProperty Name="role">
+              <ScalarProperty Name="id" ColumnName="roleid" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,412 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A2FF2734-39D2-4B16-B073-3512A3C32886}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>foroshgahlebas</RootNamespace>
+    <AssemblyName>foroshgahlebas</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BehComponents">
+      <HintPath>..\..\..\mohammad\WindowsFormsApp1\bin\Debug\BehComponents.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar2, Version=14.1.0.37, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="GHNet.Win">
+      <HintPath>H:\پروژه ها\موزه\موزه\bin\Debug\GHNet.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="LibExcel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ata\foodstoreroome\foodstoreroome\bin\Debug\LibExcel.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Base, Version=2021.1.1.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ata\foodstoreroome\foodstoreroome\bin\Debug\Stimulsoft.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Client.Designer, Version=2021.1.1.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ata\foodstoreroome\foodstoreroome\bin\Debug\Stimulsoft.Client.Designer.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Controls, Version=2021.1.1.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ata\foodstoreroome\foodstoreroome\bin\Debug\Stimulsoft.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Controls.Win, Version=2021.1.1.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ata\foodstoreroome\foodstoreroome\bin\Debug\Stimulsoft.Controls.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Dashboard, Version=2021.1.1.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ata\foodstoreroome\foodstoreroome\bin\Debug\Stimulsoft.Dashboard.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Dashboard.Design, Version=2021.1.1.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ata\foodstoreroome\foodstoreroome\bin\Debug\Stimulsoft.Dashboard.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Dashboard.Drawing, Version=2021.1.1.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ata\foodstoreroome\foodstoreroome\bin\Debug\Stimulsoft.Dashboard.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Dashboard.Drawing.Wpf, Version=2021.1.1.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ata\foodstoreroome\foodstoreroome\bin\Debug\Stimulsoft.Dashboard.Drawing.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Dashboard.Export, Version=2021.1.1.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ata\foodstoreroome\foodstoreroome\bin\Debug\Stimulsoft.Dashboard.Export.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Dashboard.Viewer, Version=2021.1.1.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ata\foodstoreroome\foodstoreroome\bin\Debug\Stimulsoft.Dashboard.Viewer.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Dashboard.Viewer.Wpf, Version=2021.1.1.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ata\foodstoreroome\foodstoreroome\bin\Debug\Stimulsoft.Dashboard.Viewer.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Data, Version=2021.1.1.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ata\foodstoreroome\foodstoreroome\bin\Debug\Stimulsoft.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Database, Version=2021.1.1.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ata\foodstoreroome\foodstoreroome\bin\Debug\Stimulsoft.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Design, Version=2021.1.1.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ata\foodstoreroome\foodstoreroome\bin\Debug\Stimulsoft.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Editor, Version=2021.1.1.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ata\foodstoreroome\foodstoreroome\bin\Debug\Stimulsoft.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Editor.Wpf, Version=2021.1.1.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ata\foodstoreroome\foodstoreroome\bin\Debug\Stimulsoft.Editor.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Map, Version=2021.1.1.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ata\foodstoreroome\foodstoreroome\bin\Debug\Stimulsoft.Map.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report, Version=2021.1.1.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ata\foodstoreroome\foodstoreroome\bin\Debug\Stimulsoft.Report.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Check, Version=2021.1.1.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ata\foodstoreroome\foodstoreroome\bin\Debug\Stimulsoft.Report.Check.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Compare, Version=2013.2.1612.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ata\foodstoreroome\foodstoreroome\bin\Debug\Stimulsoft.Report.Compare.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Design, Version=2021.1.1.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ata\foodstoreroome\foodstoreroome\bin\Debug\Stimulsoft.Report.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Design.SLViewer, Version=2013.2.1612.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ata\foodstoreroome\foodstoreroome\bin\Debug\Stimulsoft.Report.Design.SLViewer.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Helper, Version=2021.1.1.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ata\foodstoreroome\foodstoreroome\bin\Debug\Stimulsoft.Report.Helper.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Mvc, Version=2021.1.1.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ata\foodstoreroome\foodstoreroome\bin\Debug\Stimulsoft.Report.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Web, Version=2021.1.1.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ata\foodstoreroome\foodstoreroome\bin\Debug\Stimulsoft.Report.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.WebDesign, Version=2021.1.1.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ata\foodstoreroome\foodstoreroome\bin\Debug\Stimulsoft.Report.WebDesign.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Win, Version=2021.1.1.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ata\foodstoreroome\foodstoreroome\bin\Debug\Stimulsoft.Report.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Wpf, Version=2021.1.1.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ata\foodstoreroome\foodstoreroome\bin\Debug\Stimulsoft.Report.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.WpfDesign, Version=2021.1.1.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ata\foodstoreroome\foodstoreroome\bin\Debug\Stimulsoft.Report.WpfDesign.dll</HintPath>
+    </Reference>
+    <Reference Include="Svg, Version=2.4.3.29446, Culture=neutral, PublicKeyToken=12a0bac221edeae2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ata\foodstoreroome\foodstoreroome\bin\Debug\Svg.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="database\address.cs">
+      <DependentUpon>foroshgahlebas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\customer.cs">
+      <DependentUpon>foroshgahlebas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\db.cs" />
+    <Compile Include="database\dress.cs">
+      <DependentUpon>foroshgahlebas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\dress_factor.cs">
+      <DependentUpon>foroshgahlebas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\factor.cs">
+      <DependentUpon>foroshgahlebas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\foroshgahlebas.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>foroshgahlebas.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\foroshgahlebas.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>foroshgahlebas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\foroshgahlebas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>foroshgahlebas.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="database\producer.cs">
+      <DependentUpon>foroshgahlebas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\role.cs">
+      <DependentUpon>foroshgahlebas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\sysdiagram.cs">
+      <DependentUpon>foroshgahlebas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\type.cs">
+      <DependentUpon>foroshgahlebas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\user.cs">
+      <DependentUpon>foroshgahlebas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formdress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formdress.Designer.cs">
+      <DependentUpon>Formdress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="foroshfactor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="foroshfactor.Designer.cs">
+      <DependentUpon>foroshfactor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gozareshforosh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gozareshforosh.Designer.cs">
+      <DependentUpon>gozareshforosh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gozareshmoshtarian.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gozareshmoshtarian.Designer.cs">
+      <DependentUpon>gozareshmoshtarian.cs</DependentUpon>
+    </Compile>
+    <Compile Include="login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="login.Designer.cs">
+      <DependentUpon>login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newcustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newcustomer.Designer.cs">
+      <DependentUpon>newcustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newproducer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newproducer.Designer.cs">
+      <DependentUpon>newproducer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newuser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newuser.Designer.cs">
+      <DependentUpon>newuser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="security.cs" />
+    <Compile Include="tools\extention.cs" />
+    <Compile Include="tools\mymessagebox.cs" />
+    <Compile Include="tools\sqlerror.cs" />
+    <Compile Include="Validator\BaseValidator.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Validator\BaseValidator.Designer.cs">
+      <DependentUpon>BaseValidator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Validator\CustomValidator.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Validator\CustomValidator.Designer.cs">
+      <DependentUpon>CustomValidator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Validator\RangeValidator.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Validator\RangeValidator.Designer.cs">
+      <DependentUpon>RangeValidator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Validator\RegularExpressionValidator.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Validator\RegularExpressionValidator.Designer.cs">
+      <DependentUpon>RegularExpressionValidator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Validator\RequiredFieldValidator.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Validator\RequiredFieldValidator.Designer.cs">
+      <DependentUpon>RequiredFieldValidator.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formdress.resx">
+      <DependentUpon>Formdress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="foroshfactor.resx">
+      <DependentUpon>foroshfactor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gozareshforosh.resx">
+      <DependentUpon>gozareshforosh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gozareshmoshtarian.resx">
+      <DependentUpon>gozareshmoshtarian.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="login.resx">
+      <DependentUpon>login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newcustomer.resx">
+      <DependentUpon>newcustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newproducer.resx">
+      <DependentUpon>newproducer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newuser.resx">
+      <DependentUpon>newuser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="database\foroshgahlebas.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>foroshgahlebas.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="database\foroshgahlebas.edmx.diagram">
+      <DependentUpon>foroshgahlebas.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\main.jpg" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="database\foroshgahlebas.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>foroshgahlebas.Context.cs</LastGenOutput>
+      <DependentUpon>foroshgahlebas.edmx</DependentUpon>
+    </Content>
+    <Content Include="database\foroshgahlebas.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>foroshgahlebas.edmx</DependentUpon>
+      <LastGenOutput>foroshgahlebas.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
