@@ -5,7 +5,7 @@ This project is such that it is used for store employees, including the owner of
 
 An example of the project images is as follows:
 
-login page:
+<h1> login page:</h1>
 Here we have two accesses
 An access for the store manager or owner
 Two accesses for sales clerk
